@@ -21,7 +21,7 @@ namespace SistemaPedidos.DAL
             string consulta = "insert into pedido values(" + pedido.IdCliente + "," +
                                                             "'" + pedido.Fecha + "'," +
                                                             "" + pedido.Total + "," +
-                                                            "" + pedido.Estado + "," +
+                                                            "'" + pedido.Estado +
                                                             "')";
             conexion.Ejecutar(consulta);
         }
@@ -34,7 +34,7 @@ namespace SistemaPedidos.DAL
             {
                 pedido.IdPedido = Convert.ToInt32(tabla.Rows[0]["idpedido"]);
                 pedido.IdCliente = Convert.ToInt32(tabla.Rows[0]["idcliente"]);
-                pedido.Fecha = Convert.ToDateTime(tabla.Rows[0]["nombre"]);
+                pedido.Fecha = Convert.ToDateTime(tabla.Rows[0]["fecha"]);
                 pedido.Total = Convert.ToInt32(tabla.Rows[0]["total"]);
                 pedido.Estado = tabla.Rows[0]["estado"].ToString();
             }
@@ -42,7 +42,7 @@ namespace SistemaPedidos.DAL
         }
         public void EditarPedidoDal(Pedido pedido)
         {
-            string consulta = "update producto set idcliente=" + pedido.IdCliente + "," +
+            string consulta = "update pedido set idcliente=" + pedido.IdCliente + "," +
                                                         "fecha='" + pedido.Fecha + "'," +
                                                         "total=" + pedido.Total + "," +
                                                         "estado='" + pedido.Estado + "' " +
@@ -53,6 +53,16 @@ namespace SistemaPedidos.DAL
         {
             string consulta = "delete from pedido where idpedido=" + id;
             conexion.Ejecutar(consulta);
+        }
+        public DataTable CalcularTotalClienteDal(int id)
+        {
+            string consulta = "SELECT Cliente.Nombre, Cliente.Apellido, Count(Pedido.IDPedido) AS PEDIDOS, sum(Pedido.Total) AS CANTIDAD" +
+                                "FROM Cliente INNER JOIN" +
+                                                            "Pedido ON Cliente.IDCliente = Pedido.IDCliente" +
+                                "WHERE cliente.IDCLIENTE = " + id +
+                                "GROUP BY Cliente.Nombre, Cliente.Apellido";
+            DataTable lista = conexion.EjecutarDataTabla(consulta, "tabla");
+            return lista;
         }
     }
 }

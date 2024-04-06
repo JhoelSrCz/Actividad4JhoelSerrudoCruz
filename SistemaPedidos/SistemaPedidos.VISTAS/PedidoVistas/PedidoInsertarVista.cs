@@ -19,13 +19,13 @@ namespace SistemaPedidos.VISTAS.PedidoVistas
         {
             InitializeComponent();
         }
-        public static int IdClienteSelecionada = 0;
+        public static int IdClienteSelecionado = 0;
         PedidoBss bssp = new PedidoBss();
         ClienteBss bss = new ClienteBss();
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Pedido pedido = new Pedido();
-            pedido.IdCliente = IdClienteSelecionada;
+            pedido.IdCliente = IdClienteSelecionado;
             pedido.Fecha = dateTimePicker1.Value;
             pedido.Total = Convert.ToInt32(textBox2.Text);
             pedido.Estado = textBox3.Text;
@@ -45,7 +45,7 @@ namespace SistemaPedidos.VISTAS.PedidoVistas
             ClienteListarVista fr = new ClienteListarVista();
             if (fr.ShowDialog() == DialogResult.OK)
             {
-                Cliente cliente = bss.ObtenerClienteIdBss(IdClienteSelecionada);
+                Cliente cliente = bss.ObtenerClienteIdBss(IdClienteSelecionado);
                 textBox1.Text = cliente.Nombre + " " + cliente.Apellido;
             }
         }

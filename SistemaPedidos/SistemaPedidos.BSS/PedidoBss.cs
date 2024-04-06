@@ -32,5 +32,9 @@ namespace SistemaPedidos.BSS
         {
             dal.EliminarPedidoDal(id);
         }
+        public DataTable CalcularPedidosClientesBss(int id)
+        {
+            return dal.CalcularTotalClienteDal(id);
+        }
     }
 }

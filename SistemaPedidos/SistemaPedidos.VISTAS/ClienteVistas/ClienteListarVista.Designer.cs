@@ -33,6 +33,7 @@
             btnEditar = new Button();
             btnEliminar = new Button();
             label1 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             // btnEditar
             // 
             btnEditar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(312, 391);
+            btnEditar.Location = new Point(238, 391);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(127, 36);
             btnEditar.TabIndex = 2;
@@ -73,7 +74,7 @@
             // btnEliminar
             // 
             btnEliminar.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(549, 391);
+            btnEliminar.Location = new Point(426, 391);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(127, 36);
             btnEliminar.TabIndex = 3;
@@ -91,11 +92,24 @@
             label1.TabIndex = 5;
             label1.Text = "LISTA DE CLIENTES";
             // 
+            // button1
+            // 
+            button1.DialogResult = DialogResult.OK;
+            button1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(670, 391);
+            button1.Name = "button1";
+            button1.Size = new Size(140, 36);
+            button1.TabIndex = 6;
+            button1.Text = "SELECCIONAR";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // ClienteListarVista
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(822, 450);
+            Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
@@ -116,5 +130,6 @@
         private Button btnEditar;
         private Button btnEliminar;
         private Label label1;
+        private Button button1;
     }
 }
